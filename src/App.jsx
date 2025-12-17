@@ -24,13 +24,18 @@ function App() {
     });
   } 
 
+const isAdmin = roles.includes("ADMIN");
+
   return (
     <div>
       {!loggedIn ? (<LogIn login={login} />) :
+        (isAdmin ?
+        (<Admin logout={logout} username={username} />) :
         (<div>
           <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
           <button onClick={logout}>Logout</button>
-        </div>)}
+        </div>)
+        )}
     </div>
   )
 }
