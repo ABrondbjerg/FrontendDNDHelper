@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import LogIn from './components/LogIn'
 import LoggedIn from './components/LoggedIn'
+import CreateUser from './pages/CreateUser'
 import facade from './apiFacade'
+import './App.css'
 import NPCGeneratorPage from "./pages/NPCPage";
 import TownGeneratorPage from "./pages/TownPage";
 import BBEGGeneratorPage from "./pages/BBEGPage";
@@ -13,6 +15,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [roles, setRoles] = useState([]);
+  const [showRegister, setShowRegister] = useState(false);
 
   const logout = () => { 
     facade.logout()
@@ -32,11 +35,18 @@ function App() {
 
   return (
     <div>
-      {!loggedIn ? (<LogIn login={login} />) :
-        (<div>
+      {!loggedIn ? (
+        showRegister ? (
+          <CreateUser onRegistered={() => setShowRegister(false)} onCancel={() => setShowRegister(false)} />
+        ) : (
+          <LogIn login={login} onRegisterClick={() => setShowRegister(true)} />
+        )
+      ) : (
+        <div>
           <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
           <button onClick={logout}>Logout</button>
-        </div>)}
+        </div>
+      )}
     </div>
   )
 }
