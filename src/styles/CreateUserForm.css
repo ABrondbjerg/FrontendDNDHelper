@@ -1,0 +1,47 @@
+.cu-container {
+  max-width: 420px;
+  margin: 0.5rem 0;
+}
+.cu-title {
+  margin-bottom: 0.5rem;
+}
+.cu-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cu-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.cu-label {
+  font-size: 0.85rem;
+  color: #333;
+}
+.cu-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.cu-create {
+  background-color: #0366d6;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+.cu-create:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.cu-cancel {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+.cu-message {
+  margin-top: 0.6rem;
+  color: #d9534f;
+}

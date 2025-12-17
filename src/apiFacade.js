@@ -1,5 +1,6 @@
 const BASE_URL = "http://localhost:7171/api/"
 const LOGIN_ENDPOINT = "auth/login"
+const REGISTER_ENDPOINT = "auth/register"
 
 function handleHttpErrors(res) {
 if (!res.ok) {
@@ -17,6 +18,11 @@ const login = (user, password) => {
     return fetch(BASE_URL + LOGIN_ENDPOINT, options)
         .then(handleHttpErrors)
         .then(data => {setToken(data.token); return data;})
+}
+
+const createUser = (user, password) => {
+    const options = makeOptions("POST", false, {username: user, password: password });
+    return fetch(BASE_URL + REGISTER_ENDPOINT, options).then(handleHttpErrors);
 }
 
 const fetchData = (endpoint) => {
@@ -102,12 +108,14 @@ const facade = {
     getToken,
     loggedIn,
     login,
+    createUser,
     logout,
     fetchData,
     getUsernameAndRoles,
     getAllUsers,
     updateUser,
     deleteUser
+    hasUserAccess
 }
 
 export default facade;
