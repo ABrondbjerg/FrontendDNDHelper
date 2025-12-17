@@ -2,6 +2,12 @@ import { useState } from 'react'
 import LogIn from './components/LogIn'
 import LoggedIn from './components/LoggedIn'
 import facade from './apiFacade'
+import NPCGeneratorPage from "./pages/NPCPage";
+import TownGeneratorPage from "./pages/TownPage";
+import BBEGGeneratorPage from "./pages/BBEGPage";
+import ItemGeneratorPage from "./pages/ItemPage";
+import "./App.css";
+import HookGeneratorPage from "./pages/HookPage";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,4 +40,7 @@ function App() {
     </div>
   )
 }
+
+export default App;
+
 export default App

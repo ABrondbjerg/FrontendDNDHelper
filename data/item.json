@@ -1,0 +1,131 @@
+{
+  "name": [
+    "Emberfang",
+    "Whisperglass",
+    "Gravebound Ring",
+    "Sunshard Amulet",
+    "Frostveil Cloak",
+    "Bloodthorn Dagger",
+    "Echo Lantern",
+    "Voidmarked Tome",
+    "Stormcaller's Band",
+    "Ashen Coin",
+    "Celestial Compass",
+    "Shadowspire Staff",
+    "Ironroot Shield",
+    "Luminous Orb",
+    "Glimmering Boots",
+    "Phantom Gauntlets",
+    "Dragonheart Pendant",
+    "Mystic Veil",
+    "Runebound Bracers",
+    "Spectral Helm"
+  ],
+
+  "type": [
+    "Weapon",
+    "Armor",
+    "Ring",
+    "Amulet",
+    "Wondrous Item",
+    "Potion",
+    "Scroll",
+    "Staff",
+    "Wand",
+    "Tool"
+  ],
+
+  "rarity": [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Very Rare",
+    "Legendary",
+    "Artifact"
+  ],
+
+  "attunement": [
+    "No attunement required",
+    "Requires attunement",
+    "Requires attunement by a spellcaster",
+    "Requires attunement by a specific class",
+    "Requires attunement by a creature of a certain alignment"
+  ],
+
+  "description": [
+    "An ancient item etched with runes of unknown origin",
+    "This item hums softly when held",
+    "Cold to the touch and faintly glowing",
+    "Warm and comforting, as if alive",
+    "Clearly magical, yet unsettling to behold",
+    "Well-crafted, bearing signs of long use",
+    "Radiates a faint aura of power",
+    "Seemingly ordinary, but with hidden potential",
+    "Covered in intricate designs that shift when viewed from different angles",
+    "Emits a soft light in darkness",
+    "Feels unnaturally heavy for its size",
+    "Pulses with energy when near magical sources"
+  ],
+
+  "effect": [
+    "Grants a minor magical bonus",
+    "Allows the wielder to cast a spell once per day",
+    "Enhances a specific ability score",
+    "Provides resistance to a damage type",
+    "Reveals hidden truths under certain conditions",
+    "Strengthens the bond between wielder and item",
+    "Can be used to communicate telepathically",
+    "Grants limited flight for short durations",
+    "Allows the wielder to breathe underwater",
+    "Increases speed and agility",
+    "Provides protection against certain creatures",
+    "Enhances healing abilities"
+  ],
+
+  "charges": [
+    "No charges",
+    "1 charge per day",
+    "3 charges per day",
+    "5 charges, regains 1d4 daily",
+    "10 charges, regains all at dawn",
+    "Charges are consumed permanently"
+  ],
+
+  "origin": [
+    "Forged by an ancient civilization",
+    "Created by a long-dead archmage",
+    "Blessed by a forgotten god",
+    "Recovered from a lost ruin",
+    "Passed down through generations",
+    "Formed through a magical accident",
+    "Crafted by a master artisan",
+    "Discovered in a hidden cave",
+    "Given as a gift by a powerful entity",
+    "Found in the wreckage of a sunken ship",
+    "Unearthed from a burial mound",
+    "Stolen from a rival faction"
+  ],
+
+  "quirk": [
+    "Whispers faintly when used",
+    "Grows warm near danger",
+    "Occasionally moves on its own",
+    "Leaves a faint magical residue",
+    "Feels heavier than it should",
+    "Seems to watch its wielder",
+    "Changes color based on the time of day",
+    "Emits a soft humming sound",
+    "Attracts small animals",
+    "Occasionally glows in the dark",
+    "Feels cold to the touch",
+    "Makes a faint ticking noise",
+    "Has a slight vibration when magic is near",
+    "Feels lighter when held by a child",
+    "Occasionally emits sparks of light",
+    "Feels warm when near fire",
+    "Has a faint scent of herbs",
+    "Occasionally causes static electricity",
+    "Feels heavier when in water",
+    "Makes a soft chime sound when moved"
+  ]
+}
