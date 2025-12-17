@@ -1,4 +1,4 @@
-import TownGenerator from "../components/TownGenerator";
+import TownGenerator from "../components/generators/TownGenerator";
 
 const TownGeneratorPage = () => {
   return (

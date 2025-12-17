@@ -1,4 +1,4 @@
-import BBEGGenerator from "../components/BBEGGenerator";
+import BBEGGenerator from "../components/generators/BBEGGenerator";
 
 const BBEGGeneratorPage = () => {
   return (

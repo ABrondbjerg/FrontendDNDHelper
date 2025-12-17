@@ -1,4 +1,4 @@
-import NPCGenerator from "../components/NPCGenerator";
+import NPCGenerator from "../components/generators/NPCGenerator";
 
 const NPCGeneratorPage = () => {
   return (
