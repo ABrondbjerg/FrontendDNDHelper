@@ -15,7 +15,6 @@ function LoggedIn( { loggedIn, username, roles }) {
   return (
     <div>
       <h2>Data Received from server</h2>
-      <h3>{dataFromServer.msg}</h3>
       <h3>{username}</h3>
       <h3>{roles}</h3>
     </div>
