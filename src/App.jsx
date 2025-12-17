@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Admin from './components/Admin'
 import LogIn from './components/LogIn'
 import LoggedIn from './components/LoggedIn'
 import facade from './apiFacade'
@@ -29,18 +30,21 @@ function App() {
       setRoles(roles);
     });
   } 
+const isAdmin = roles.includes("ADMIN")|| username === "admin";
 
   return (
     <div>
       {!loggedIn ? (<LogIn login={login} />) :
+        (isAdmin || loggedIn ?
+        (<Admin logout={logout} username={username} />) :
         (<div>
           <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
           <button onClick={logout}>Logout</button>
-        </div>)}
+        </div>)
+        )}
     </div>
   )
 }
 
 export default App;
 
-export default App

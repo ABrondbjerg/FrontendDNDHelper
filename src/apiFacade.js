@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:7070/api/"
+const BASE_URL = "http://localhost:7171/api/"
 const LOGIN_ENDPOINT = "auth/login"
 
 function handleHttpErrors(res) {
@@ -16,7 +16,7 @@ const login = (user, password) => {
     const options = makeOptions("POST", false, {username: user, password: password });
     return fetch(BASE_URL + LOGIN_ENDPOINT, options)
         .then(handleHttpErrors)
-        .then(data => {setToken(data.token) })
+        .then(data => {setToken(data.token); return data;})
 }
 
 const fetchData = (endpoint) => {
@@ -73,7 +73,27 @@ const getUsernameAndRoles = () => {
         const roles = getUsernameAndRoles()[1].split(',')
         return loggedIn && roles.includes(neededRole)
     }
+const getAllUsers = () => {
+  return fetch(BASE_URL + "auth/users/", {
+    headers: { 'Authorization': `Bearer ${getToken()}` }
+  }).then(handleHttpErrors);
+}
 
+
+const updateUser = (username, user) => {
+  return fetch(BASE_URL + `auth/users/${username}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
+    body: JSON.stringify(user)
+  }).then(handleHttpErrors);
+}
+
+const deleteUser = (username) => {
+  return fetch(BASE_URL + `auth/users/${username}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${getToken()}` }
+  }).then(handleHttpErrors);
+}
 
 
 const facade = {
@@ -84,7 +104,10 @@ const facade = {
     login,
     logout,
     fetchData,
-    getUsernameAndRoles
+    getUsernameAndRoles,
+    getAllUsers,
+    updateUser,
+    deleteUser
 }
 
 export default facade;
