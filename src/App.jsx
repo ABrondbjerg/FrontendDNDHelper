@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Admin from './components/Admin'
 import LogIn from './components/LogIn'
 import LoggedIn from './components/LoggedIn'
 import CreateUser from './pages/CreateUser'
@@ -32,9 +33,18 @@ function App() {
       setRoles(roles);
     });
   } 
+const isAdmin = roles.includes("ADMIN")|| username === "admin";
 
   return (
     <div>
+      {!loggedIn ? (<LogIn login={login} />) :
+        (isAdmin || loggedIn ?
+        (<Admin logout={logout} username={username} />) :
+        (<div>
+          <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
+          <button onClick={logout}>Logout</button>
+        </div>)
+        )}
       {!loggedIn ? (
         showRegister ? (
           <CreateUser onRegistered={() => setShowRegister(false)} onCancel={() => setShowRegister(false)} />
@@ -53,4 +63,3 @@ function App() {
 
 export default App;
 
-export default App
