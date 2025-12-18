@@ -1,4 +1,4 @@
-import ItemGenerator from "../components/ItemGenerator";
+import ItemGenerator from "../components/generators/ItemGenerator";
 
 const ItemGeneratorPage = () => {
   return (
