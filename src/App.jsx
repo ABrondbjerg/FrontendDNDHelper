@@ -51,15 +51,15 @@ function App() {
         <Route path="login" element={<LoginLayout />} />
         <Route index element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-      </Route>
 
-      <Route path="generators" element={<GeneratorLayout />}>
-        <Route index element={<GeneratorMain />} />
-        <Route path="npc" element={<NPCGeneratorPage />} />
-        <Route path="town" element={<TownGeneratorPage />} />
-        <Route path="bbeg" element={<BBEGGeneratorPage />} />
-        <Route path="items" element={<ItemGeneratorPage />} />
-        <Route path="hooks" element={<HookGeneratorPage />} />
+        <Route path="generators" element={<GeneratorLayout />}>
+          <Route index element={<GeneratorMain />} />
+          <Route path="npc" element={<NPCGeneratorPage />} />
+          <Route path="town" element={<TownGeneratorPage />} />
+          <Route path="bbeg" element={<BBEGGeneratorPage />} />
+          <Route path="items" element={<ItemGeneratorPage />} />
+          <Route path="hooks" element={<HookGeneratorPage />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
