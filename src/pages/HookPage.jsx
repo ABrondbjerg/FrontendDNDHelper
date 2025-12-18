@@ -1,4 +1,4 @@
-import HookGenerator from "../components/HookGenerator";
+import HookGenerator from "../components/generators/HookGenerator";
 
 const HookGeneratorPage = () => {
   return (
