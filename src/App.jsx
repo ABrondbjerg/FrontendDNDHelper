@@ -1,10 +1,4 @@
-import { useState } from "react";
-import Admin from "./components/Admin";
-import CreateUser from "./pages/CreateUser";
-import facade from "./apiFacade";
 import "./App.css";
-import LogIn from "./components/auth/LogIn";
-import LoggedIn from "./components/auth/LoggedIn";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "/src/components/layout/MainLayout.jsx";
 import LoginLayout from "/src/components/layout/LoginLayout";
@@ -22,27 +16,6 @@ import RegisterPage from "/src/pages/RegisterPage";
 import NotFoundPage from "/src/pages/NotFoundPage";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [roles, setRoles] = useState([]);
-  const [showRegister, setShowRegister] = useState(false);
-
-  const logout = () => {
-    facade.logout();
-    setLoggedIn(false);
-  };
-
-  const login = (user, pass) => {
-    facade.login(user, pass).then(() => {
-      setLoggedIn(true);
-      console.log("Now we are logged in");
-      const [username, roles] = facade.getUsernameAndRoles();
-      setUsername(username);
-      setRoles(roles);
-    });
-  };
-  const isAdmin = roles.includes("ADMIN") || username === "admin";
-
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -64,30 +37,6 @@ function App() {
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-    /*
-    <div>
-      {!loggedIn ? (<LogIn login={login} />) :
-        (isAdmin || loggedIn ?
-        (<Admin logout={logout} username={username} />) :
-        (<div>
-          <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
-          <button onClick={logout}>Logout</button>
-        </div>)
-        )}
-      {!loggedIn ? (
-        showRegister ? (
-          <CreateUser onRegistered={() => setShowRegister(false)} onCancel={() => setShowRegister(false)} />
-        ) : (
-          <LogIn login={login} onRegisterClick={() => setShowRegister(true)} />
-        )
-      ) : (
-        <div>
-          <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
-          <button onClick={logout}>Logout</button>
-        </div>
-      )}
-    </div>
-  */
   );
 }
 
