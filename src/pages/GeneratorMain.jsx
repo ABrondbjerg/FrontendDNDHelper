@@ -4,11 +4,23 @@ export default function GeneratorMain() {
   return (
     <div>
       <h1>Generators</h1>
-      <Link to="/generators/npc">NPC</Link>
-      <Link to="/generators/town">Town</Link>
-      <Link to="/generators/bbeg">BBEG</Link>
-      <Link to="/generators/items">Items</Link>
-      <Link to="/generators/hooks">Hooks</Link>
+      <div className="button-group">
+        <Link to="/generators/npc">
+          <button>NPC</button>
+        </Link>
+        <Link to="/generators/town">
+          <button>Town</button>
+        </Link>
+        <Link to="/generators/bbeg">
+          <button>BBEG</button>
+        </Link>
+        <Link to="/generators/items">
+          <button>Items</button>
+        </Link>
+        <Link to="/generators/hooks">
+          <button>Hooks</button>
+        </Link>
+      </div>
     </div>
   );
 }
