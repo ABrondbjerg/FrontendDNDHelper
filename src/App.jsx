@@ -1,11 +1,15 @@
-import { useState } from "react";
+//import { useState } from "react";
 import Admin from "./components/Admin";
-import LogIn from "./components/auth/LogIn";
-import LoggedIn from "./components/auth/LoggedIn";
+import LogIn from "./components/LogIn";
+import LoggedIn from "./components/LoggedIn";
 import CreateUser from "./pages/CreateUser";
-import facade from "./apiFacade";
-
+//import facade from "./apiFacade";
 import "./App.css";
+import "./App.css";
+//import LogIn from "./components/auth/LogIn";
+//import LoggedIn from "./components/auth/LoggedIn";
+//import facade from "./apiFacade";
+
 import NPCGeneratorPage from "/src/pages/NPCPage.jsx";
 import TownGeneratorPage from "/src/pages/TownPage";
 import BBEGGeneratorPage from "/src/pages/BBEGPage";
@@ -17,16 +21,8 @@ import LoginPage from "/src/pages/LoginPage";
 import RegisterPage from "/src/pages/RegisterPage";
 import NotFoundPage from "/src/pages/NotFoundPage";
 
-import "./App.css";
-
-import { Routes, Route } from "react-router-dom";
-
-import MainLayout from "./components/layout/MainLayout";
-import LoginLayout from "./components/layout/LoginLayout";
-import GeneratorLayout from "./components/layout/GeneratorLayout";
-
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  /*const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [roles, setRoles] = useState([]);
   const [showRegister, setShowRegister] = useState(false);
@@ -46,7 +42,7 @@ function App() {
     });
   };
   const isAdmin = roles.includes("ADMIN") || username === "admin";
-
+*/
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -69,13 +65,30 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
 
-    /* <div>
+    /*
+    <div>
       {!loggedIn ? (<LogIn login={login} />) :
+        (isAdmin || loggedIn ?
+        (<Admin logout={logout} username={username} />) :
         (<div>
           <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
           <button onClick={logout}>Logout</button>
-        </div>)}
-    </div>*/
+        </div>)
+        )}
+      {!loggedIn ? (
+        showRegister ? (
+          <CreateUser onRegistered={() => setShowRegister(false)} onCancel={() => setShowRegister(false)} />
+        ) : (
+          <LogIn login={login} onRegisterClick={() => setShowRegister(true)} />
+        )
+      ) : (
+        <div>
+          <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
+          <button onClick={logout}>Logout</button>
+        </div>
+      )}
+    </div>
+    */
   );
 }
 
