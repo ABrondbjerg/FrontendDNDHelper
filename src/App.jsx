@@ -1,14 +1,14 @@
-//import { useState } from "react";
+import { useState } from "react";
 import Admin from "./components/Admin";
-import LogIn from "./components/LogIn";
-import LoggedIn from "./components/LoggedIn";
 import CreateUser from "./pages/CreateUser";
-//import facade from "./apiFacade";
+import facade from "./apiFacade";
 import "./App.css";
-import "./App.css";
-//import LogIn from "./components/auth/LogIn";
-//import LoggedIn from "./components/auth/LoggedIn";
-//import facade from "./apiFacade";
+import LogIn from "./components/auth/LogIn";
+import LoggedIn from "./components/auth/LoggedIn";
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "/src/components/layout/MainLayout.jsx";
+import LoginLayout from "/src/components/layout/LoginLayout";
+import GeneratorLayout from "/src/components/layout/GeneratorLayout";
 
 import NPCGeneratorPage from "/src/pages/NPCPage.jsx";
 import TownGeneratorPage from "/src/pages/TownPage";
@@ -22,7 +22,7 @@ import RegisterPage from "/src/pages/RegisterPage";
 import NotFoundPage from "/src/pages/NotFoundPage";
 
 function App() {
-  /*const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [roles, setRoles] = useState([]);
   const [showRegister, setShowRegister] = useState(false);
@@ -42,7 +42,7 @@ function App() {
     });
   };
   const isAdmin = roles.includes("ADMIN") || username === "admin";
-*/
+
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -64,7 +64,6 @@ function App() {
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-
     /*
     <div>
       {!loggedIn ? (<LogIn login={login} />) :
@@ -88,7 +87,7 @@ function App() {
         </div>
       )}
     </div>
-    */
+  */
   );
 }
 
