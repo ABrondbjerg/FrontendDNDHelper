@@ -79,12 +79,18 @@ const getUsernameAndRoles = () => {
         const roles = getUsernameAndRoles()[1].split(',')
         return loggedIn && roles.includes(neededRole)
     }
+    
 const getAllUsers = () => {
   return fetch(BASE_URL + "auth/users/", {
     headers: { 'Authorization': `Bearer ${getToken()}` }
   }).then(handleHttpErrors);
+  
 }
-
+const getRole = (username) => {
+  return fetch(BASE_URL + `auth/users/${username}/role`, {
+    headers: { 'Authorization': `Bearer ${getToken()}` }
+  }).then(handleHttpErrors);
+}
 
 const updateUser = (username, user) => {
   return fetch(BASE_URL + `auth/users/${username}`, {
@@ -92,6 +98,24 @@ const updateUser = (username, user) => {
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}` },
     body: JSON.stringify(user)
   }).then(handleHttpErrors);
+}
+const updateUserRole = (username, role) => {
+  const options = makeOptions("POST", true, { role: role });
+
+  
+  return fetch(BASE_URL + `auth/users/${username}/role`, options)
+    .then(res => {
+      if (!res.ok) {
+        return res.text().then(text => {
+          throw new Error(text);
+        });
+      }
+      return res.json();
+    })
+    .catch(err => {
+      console.error("Full error:", err);
+      throw err;
+    });
 }
 
 const deleteUser = (username) => {
@@ -114,8 +138,10 @@ const facade = {
     getUsernameAndRoles,
     getAllUsers,
     updateUser,
-    deleteUser
-    hasUserAccess
+    deleteUser,
+    hasUserAccess,
+    updateUserRole,
+    getRole
 }
 
 export default facade;
