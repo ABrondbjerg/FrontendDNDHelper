@@ -1,8 +1,11 @@
 import { useState } from "react";
+import Admin from "./components/Admin";
 import LogIn from "./components/auth/LogIn";
 import LoggedIn from "./components/auth/LoggedIn";
+import CreateUser from "./pages/CreateUser";
 import facade from "./apiFacade";
 
+import "./App.css";
 import NPCGeneratorPage from "/src/pages/NPCPage.jsx";
 import TownGeneratorPage from "/src/pages/TownPage";
 import BBEGGeneratorPage from "/src/pages/BBEGPage";
@@ -26,6 +29,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [roles, setRoles] = useState([]);
+  const [showRegister, setShowRegister] = useState(false);
 
   const logout = () => {
     facade.logout();
@@ -41,6 +45,7 @@ function App() {
       setRoles(roles);
     });
   };
+  const isAdmin = roles.includes("ADMIN") || username === "admin";
 
   return (
     <Routes>
@@ -63,17 +68,15 @@ function App() {
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+
+    /* <div>
+      {!loggedIn ? (<LogIn login={login} />) :
+        (<div>
+          <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
+          <button onClick={logout}>Logout</button>
+        </div>)}
+    </div>*/
   );
 }
 
 export default App;
-/*<div>
-      {!loggedIn ? (
-        <LogIn login={login} />
-      ) : (
-        <div>
-          <LoggedIn loggedIn={loggedIn} username={username} roles={roles} />
-          <button onClick={logout}>Logout</button>
-        </div>
-      )}
-    </div>*/
