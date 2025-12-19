@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Header from "/Users/alexbrondbjerg/DndhelperFrontend/FrontendDNDHelper/src/components/layout/Header.jsx";
+import Header from "../layout/Header";
 import LoginPage from "../../pages/LoginPage";
 
 export default function LoginLayout() {
