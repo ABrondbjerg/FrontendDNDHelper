@@ -10,7 +10,7 @@ export default function Header() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/generator">Generator</NavLink>
+            <NavLink to="/generators">Generator</NavLink>
           </li>
           <li>
             <NavLink to="/login">Login</NavLink>

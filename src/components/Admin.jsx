@@ -4,12 +4,20 @@ import facade from '../apiFacade'
 function Admin({ logout, username }) {
   const [users, setUsers] = useState([]);
   const [editId, setEditId] = useState(null);
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [selectedRole, setSelectedRole] = useState('');
+  
+  
 
   const loadUsers = () => {
-    facade.getAllUsers().then(setUsers).catch(console.error);
-  };
-  
+  facade.getAllUsers()
+    .then(data => {
+      console.log("Users data:", data);
+      setUsers(data);
+    })
+    .catch(console.error);
+};
+
+
   useEffect(() => {
     loadUsers();
   }, []);
@@ -18,65 +26,112 @@ function Admin({ logout, username }) {
 
 
 
-  const handleUpdate = (id) => {
-    facade.updateUser(id, formData).then(() => {
+  const handleUpdateRole = (username) => {
+  console.log("Updating role for:", username, "to:", selectedRole);
+  
+  if (!selectedRole) {
+    alert("Vælg en rolle først!");
+    return;
+  }
+  
+  facade.updateUserRole(username, selectedRole)  
+    .then((response) => {
+      console.log("Role updated successfully:", response);
       setEditId(null);
-      setFormData({ username: '', password: '' });
+      setSelectedRole('');
       loadUsers();
-    }).catch(console.error);
-  };
+    })
+    .catch((error) => {
+      console.error("Error updating role:", error);
+      alert("Fejl ved opdatering af rolle: " + error.message);
+    });
+};
 
   const handleDelete = (id) => {
     facade.deleteUser(id).then(loadUsers).catch(console.error);
   };
 
-  return (
-    <div>
-      <h1>Admin Dashboard - {username}</h1>
+ return (
+    <div className="admin-container">
+      <div className="admin-header">
+        <h1>Admin Dashboard</h1>
+        <span className="admin-username">Logged in as: {username}</span>
+      </div>
 
-      <h2>Users</h2>
-     <div style={{marginBottom: '20px'}}>
-  {editId && (
-    <>
-      <input 
-        placeholder="Username" 
-        value={formData.username} 
-        onChange={(e) => setFormData({...formData, username: e.target.value})} 
-      />
-      <input 
-        placeholder="Password" 
-        type="password" 
-        value={formData.password} 
-        onChange={(e) => setFormData({...formData, password: e.target.value})} 
-      />
-      <button onClick={() => handleUpdate(editId)}>Gem</button>
-      <button onClick={() => { setEditId(null); setFormData({ username: '', password: '' }); }}>Annuller</button>
-    </>
-  )}
-</div>
-
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (
-            <tr key={user.username}>
-              <td>{user.username}</td>
-              <td>
-                <button onClick={() => { setEditId(user.username); setFormData({username: user.username, password: ''}); }}>Rediger</button>
-                <button onClick={() => handleDelete(user.username)}>Slet</button>
-              </td>
+      <div className="admin-content">
+        <h2>User Management</h2>
+        
+        <table className="users-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Roles</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map(user => (
+              <tr key={user.username}>
+                <td className="username-cell">{user.username}</td>
+                <td className="roles-cell">
+                  {editId === user.username ? (
+                    <div className="edit-role-container">
+                      <select 
+                        className="role-select"
+                        value={selectedRole} 
+                        onChange={(e) => setSelectedRole(e.target.value)}
+                      >
+                        <option value="">Vælg rolle</option>
+                        <option value="USER">USER</option>
+                        <option value="ADMIN">ADMIN</option>
+                      </select>
+                      <button 
+                        className="btn btn-save"
+                        onClick={() => handleUpdateRole(user.username)}
+                      >
+                        Gem
+                      </button>
+                      <button 
+                        className="btn btn-cancel"
+                        onClick={() => { setEditId(null); setSelectedRole(''); }}
+                      >
+                        Annuller
+                      </button>
+                    </div>
+                  ) : (
+                    <span className="role-badge">{user.roles}</span>
+                  )}
+                </td>
+                <td className="actions-cell">
+                  {editId !== user.username && (
+                    <div className="action-buttons">
+                      <button 
+                        className="btn btn-edit"
+                        onClick={() => { 
+                          setEditId(user.username); 
+                          setSelectedRole(user.roles?.[0] || ''); 
+                        }}
+                      >
+                        Rediger rolle
+                      </button>
+                      <button 
+                        className="btn btn-delete"
+                        onClick={() => handleDelete(user.username)}
+                      >
+                        Slet
+                      </button>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <hr />
-      <button onClick={logout}>Logout</button>
+      <div className="admin-footer">
+        <button className="btn btn-logout" onClick={logout}>Logout</button>
+      </div>
     </div>
   )
 }
