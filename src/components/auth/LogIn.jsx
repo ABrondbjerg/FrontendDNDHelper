@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "../../styles/Loginstyle.module.css";
 
 function LogIn({ login, onRegisterClick, message, clearMessage }) {
   const init = { username: "", password: "" };
@@ -14,16 +15,50 @@ function LogIn({ login, onRegisterClick, message, clearMessage }) {
   }
 
   return (
-    <div>
+  <div className={styles.loginContainer}>
+    <div className={styles.loginCard}>
       <h2>Login</h2>
-      <form onSubmit={performLogin}>
-        <input placeholder="User Name" id="username" onChange={onChange} value={loginCredentials.username} />
-        <input placeholder="Password" id="password" type="password" onChange={onChange} value={loginCredentials.password} />
-        <button type="submit">Login</button>
+      
+      <form onSubmit={performLogin} className={styles.loginForm}>
+        <div className={styles.inputGroup}>
+          <label htmlFor="username">Username</label>
+          <input 
+            placeholder="Enter your username" 
+            id="username" 
+            onChange={onChange} 
+            value={loginCredentials.username}
+            autoComplete="username"
+          />
+        </div>
+
+        <div className={styles.inputGroup}>
+          <label htmlFor="password">Password</label>
+          <input 
+            placeholder="Enter your password" 
+            id="password" 
+            type="password" 
+            onChange={onChange} 
+            value={loginCredentials.password}
+            autoComplete="current-password"
+          />
+        </div>
+
+        <button type="submit" className={styles.btnLogin}>
+          Login
+        </button>
       </form>
-      {message && <p className="login-message">{message}</p>}
-      <button type="button" className="link-button" onClick={onRegisterClick}>Create user</button>
+
+      <div className={styles.divider}>or</div>
+
+      <button 
+        type="button" 
+        className={styles.linkButton} 
+        onClick={onRegisterClick}
+      >
+        Don't have an account? Create one
+      </button>
     </div>
-  )
-}
+  </div>
+);
+};
 export default LogIn

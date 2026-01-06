@@ -1,0 +1,120 @@
+/* */
+.pageWrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: white; 
+  display: flex;
+  flex-direction: column;
+}
+
+/* lilla bar  */
+.navbar {
+  background-color: #ba68c8;
+  width: 100%;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.logoLink {
+  text-decoration: none;
+  color: white;
+}
+
+.navLinks {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Centreret layout  */
+.mainContent {
+  display: grid;
+  grid-template-columns: 350px 600px; 
+  gap: 80px;
+  margin: 60px auto; 
+  padding: 0 20px;
+  align-items: start;
+}
+
+/* Venstre boks  */
+.visualizer {
+  border: 2px solid #000000; 
+  border-radius: 12px;
+  height: 550px;
+  padding: 40px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.selectorRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Pilene */
+.arrowBtn {
+  background: white; 
+  color: black;    
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+/* Højre side random generate tekst*/
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.npcCard {
+  margin-top: 30px;
+  font-size: 26px; 
+  line-height: 2.2;
+  color: black; 
+}
+
+.npcCard strong {
+  color: black; 
+}
+
+/* Knapperne  */
+.btnGray {
+  background-color: #e0e0e0;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.saveBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
