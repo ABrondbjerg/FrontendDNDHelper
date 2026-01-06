@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styles from "../../styles/Loginstyle.module.css";
 
-function LogIn({ login, onRegisterClick }) {
+function LogIn({ login, onRegisterClick, message, clearMessage }) {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
 
@@ -10,7 +10,8 @@ function LogIn({ login, onRegisterClick }) {
     login(loginCredentials.username, loginCredentials.password);
   }
   const onChange = (evt) => {
-    setLoginCredentials({ ...loginCredentials,[evt.target.id]: evt.target.value })
+    setLoginCredentials({ ...loginCredentials,[evt.target.id]: evt.target.value });
+    if (clearMessage) clearMessage();
   }
 
   return (
