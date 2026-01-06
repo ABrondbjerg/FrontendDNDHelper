@@ -1,0 +1,71 @@
+.generators-container {
+  padding: 20px;
+}
+
+.generators-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.generator-card {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.generator-card:hover {
+  transform: scale(1.02);
+}
+
+.generator-banner {
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-position: right center;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative;
+  overflow: visible;
+}
+.generator-figure {
+  height: 200px; /* Større end bannerhøjden */
+  width: auto;
+  position: absolute;
+  right: 20px;
+  top: -15px; /* Stikker ud over toppen */
+  z-index: 3;
+  pointer-events: none; /* Så den ikke blokerer klikket */
+}
+
+/* Darken overlay så knappen er læselig */
+.generator-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.generator-button {
+  position: relative;
+  z-index: 2;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.generator-button:hover {
+  background-color: #0056b3;
+}
