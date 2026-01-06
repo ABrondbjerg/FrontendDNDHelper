@@ -75,6 +75,9 @@ const getUsernameAndRoles = () => {
     }
 
 
+const getAllUsers = () => {
+  return fetchData("users");
+}
 
 const facade = {
     makeOptions,
@@ -84,6 +87,7 @@ const facade = {
     login,
     logout,
     fetchData,
+    getAllUsers,
     getUsernameAndRoles
 }
 
