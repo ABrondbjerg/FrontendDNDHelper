@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function LogIn({ login, onRegisterClick }) {
+function LogIn({ login, onRegisterClick, message, clearMessage }) {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
 
@@ -9,7 +9,8 @@ function LogIn({ login, onRegisterClick }) {
     login(loginCredentials.username, loginCredentials.password);
   }
   const onChange = (evt) => {
-    setLoginCredentials({ ...loginCredentials,[evt.target.id]: evt.target.value })
+    setLoginCredentials({ ...loginCredentials,[evt.target.id]: evt.target.value });
+    if (clearMessage) clearMessage();
   }
 
   return (
@@ -20,6 +21,7 @@ function LogIn({ login, onRegisterClick }) {
         <input placeholder="Password" id="password" type="password" onChange={onChange} value={loginCredentials.password} />
         <button type="submit">Login</button>
       </form>
+      {message && <p className="login-message">{message}</p>}
       <button type="button" className="link-button" onClick={onRegisterClick}>Create user</button>
     </div>
   )

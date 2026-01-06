@@ -19,16 +19,23 @@ function CreateUser({ onRegistered, onCancel }) {
     }
     if (!form.username || !form.password) {
       setMsg("Please fill out all fields");
-      return;
+      return; 
     }
 
     setSubmitting(true);
     try {
       await facade.createUser(form.username, form.password);
-      setMsg("User created successfully. You can now login.");
-      if (onRegistered) onRegistered();
+      const successMsg = "User created successfully. You can now login.";
+      setMsg(successMsg);
+      if (onRegistered) onRegistered(successMsg);
     } catch (err) {
-      err.fullError && err.fullError.then(e => setMsg(e.message || JSON.stringify(e))).catch(() => setMsg("Failed to create user"));
+      err.fullError && err.fullError
+        .then((e) => {
+          // Prefer common server message fields: message, warning, error
+          const serverMsg = e && (e.message || e.warning || e.error || (typeof e === 'string' ? e : undefined));
+          setMsg(serverMsg || JSON.stringify(e));
+        })
+        .catch(() => setMsg("Failed to create user"));
     } finally {
       setSubmitting(false);
     }
