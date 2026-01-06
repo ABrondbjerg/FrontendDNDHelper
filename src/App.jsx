@@ -25,6 +25,8 @@ function App() {
         <Route index element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
 
+   <Route path="npc" element={<NPCGeneratorPage />} />
+
         <Route path="generators" element={<GeneratorLayout />}>
           <Route index element={<GeneratorMain />} />
           <Route path="npc" element={<NPCGeneratorPage />} />

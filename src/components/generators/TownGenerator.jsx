@@ -1,5 +1,6 @@
 import { useState } from "react";
 import townData from "/data/town.json";
+import styles from "/src/styles/LayoutModule.module.css";
 
 function randomFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -22,36 +23,42 @@ const TownGenerator = () => {
   };
 
   return (
-    <div className="npc-generator">
-      <h2>NPC Generator</h2>
-      <button onClick={generateTown} className="generate-btn">
-        Generate NPC
-      </button>
+  <div className={styles.pageWrapper}>
+    <main className={styles.mainContent}>
+      
+      {/* Venstre side - Visualizer */}
+      <div className={styles.visualizer}>
+        {[1, 2, 3].map((i) => (
+          <div key={i} className={styles.selectorRow}>
+            <button className={styles.arrowBtn}>←</button>
+            <button className={styles.arrowBtn}>→</button>
+          </div>
+        ))}
+      </div>
 
-      {town && (
-        <div className="npc-card">
-          <p>
-            <strong>Name:</strong> {town.name}
-          </p>
-          <p>
-            <strong>Size:</strong> {town.size}
-          </p>
-          <p>
-            <strong>Description:</strong> {town.description}
-          </p>
-          <p>
-            <strong>Landmark:</strong> {town.landmark}
-          </p>
-          <p>
-            <strong>Quirk:</strong> {town.quirk}
-          </p>
-          <p>
-            <strong>Rumor:</strong> {town.rumor}
-          </p>
+      {/* Højre side - Info */}
+      <div className={styles.infoSection}>
+        <button onClick={generateTown} className={styles.btnGray}>
+          Random Town
+        </button>
+
+        <div className={styles.npcCard}>
+          <p><strong>Name:</strong> {town?.name}</p>
+          <p><strong>Size:</strong> {town?.size}</p>
+          <p><strong>Description:</strong> {town?.description}</p>
+          <p><strong>Landmark:</strong> {town?.landmark}</p>
+          <p><strong>Shop:</strong> {town?.shop}</p>
+          <p><strong>Quirk:</strong> {town?.quirk}</p>
+          <p><strong>Rumor:</strong> {town?.rumor}</p>
         </div>
-      )}
-    </div>
-  );
+
+        <div className={styles.saveBtnContainer}>
+          <button className={styles.btnGray}>Save Town</button>
+        </div>
+      </div>
+    </main>
+  </div>
+);
 };
 
 export default TownGenerator;
