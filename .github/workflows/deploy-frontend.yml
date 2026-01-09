@@ -32,24 +32,20 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           set -euo pipefail
-          echo "HOME=$HOME"
-          echo "whoami=$(whoami)"
-          echo "pwd=$(pwd)"
           mkdir -p "$HOME/.ssh"
           chmod 700 "$HOME/.ssh"
 
-          # skriv private key sikkert (bevarer newlines)
-          printf "%s" "$SSH_PRIVATE_KEY" > "$HOME/.ssh/id_rsa"
-          chmod 600 "$HOME/.ssh/id_rsa"
+          # skriv key og fjern Windows carriage returns (\r)
+          printf "%s" "$SSH_PRIVATE_KEY" | tr -d '\r' > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
 
-          # trust host key
           ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> "$HOME/.ssh/known_hosts"
           chmod 644 "$HOME/.ssh/known_hosts"
 
       - name: Deploy dist to server (rsync)
         run: |
           rsync -az --delete \
-            -e "ssh -p ${{ secrets.SSH_PORT }}" \
+            -e "ssh -i $HOME/.ssh/id_ed25519 -p ${{ secrets.SSH_PORT }}" \
             dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
 
