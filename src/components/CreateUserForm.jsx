@@ -1,28 +1,62 @@
+import React from 'react'
 import '../styles/CreateUserForm.css'
+import { useNavigate } from 'react-router-dom';
 
-export default function CreateUserForm({ form, onChange, onSubmit, onCancel, submitting, message }) {
+
+
+export default function CreateUserForm({ form, onChange, onSubmit, submitting, message }) {
+  const navigate = useNavigate();
   return (
     <div className="cu-container">
-      <h2 className="cu-title">Create user</h2>
-      <form className="cu-form" onSubmit={onSubmit}>
-        <label className="cu-field">
-          <span className="cu-label">User Name</span>
-          <input id="username" placeholder="User Name" onChange={onChange} value={form.username} />
-        </label>
-        <label className="cu-field">
-          <span className="cu-label">Password</span>
-          <input id="password" type="password" placeholder="Password" onChange={onChange} value={form.password} />
-        </label>
-        <label className="cu-field">
-          <span className="cu-label">Repeat Password</span>
-          <input id="repeatPassword" type="password" placeholder="Repeat Password" onChange={onChange} value={form.repeatPassword} />
-        </label>
-        <div className="cu-actions">
-          <button type="submit" disabled={submitting} className="cu-create">Create</button>
-          <button type="button" onClick={onCancel} className="cu-cancel">Cancel</button>
-        </div>
-      </form>
-      {message && <p className="cu-message">{message}</p>}
+      <div className="cu-card">
+        <h2 className="cu-title">Create Account</h2>
+        
+        <form className="cu-form" onSubmit={onSubmit}>
+          <div className="cu-field">
+            <label className="cu-label">Username</label>
+            <input 
+              id="username" 
+              placeholder="Choose a username" 
+              onChange={onChange} 
+              value={form.username} 
+            />
+          </div>
+
+          <div className="cu-field">
+            <label className="cu-label">Password</label>
+            <input 
+              id="password" 
+              type="password" 
+              placeholder="Choose a password" 
+              onChange={onChange} 
+              value={form.password} 
+            />
+          </div>
+
+          <div className="cu-field">
+            <label className="cu-label">Repeat Password</label>
+            <input 
+              id="repeatPassword" 
+              type="password" 
+              placeholder="Repeat your password" 
+              onChange={onChange} 
+              value={form.repeatPassword} 
+            />
+          </div>
+
+          {message && <p className="cu-message" style={{ color: message.includes("Error") || message.includes("not match") || message.includes("fill out") ? "#d9534f" : "#28a745" }}>{message}</p>}
+
+          <button type="submit" disabled={submitting} className="cu-create">
+            {submitting ? "Creating..." : "Create Account"}
+          </button>
+        </form>
+
+        <div className="cu-divider">or</div>
+
+        <button type="button" onClick={() => navigate('/login')} className="cu-cancel">
+          Already have an account? Login
+        </button>
+      </div>
     </div>
   )
 }

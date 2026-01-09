@@ -31,16 +31,15 @@
   overflow: visible;
 }
 .generator-figure {
-  height: 200px; /* Større end bannerhøjden */
+  height: 200px; 
   width: auto;
   position: absolute;
   right: 20px;
-  top: -15px; /* Stikker ud over toppen */
+  top: -15px; 
   z-index: 3;
-  pointer-events: none; /* Så den ikke blokerer klikket */
+  pointer-events: none; /
 }
 
-/* Darken overlay så knappen er læselig */
 .generator-banner::before {
   content: "";
   position: absolute;

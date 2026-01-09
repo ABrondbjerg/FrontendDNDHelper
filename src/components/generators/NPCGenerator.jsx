@@ -3,9 +3,30 @@ import npcData from "/data/npc.json";
 import styles from "/src/styles/LayoutModule.module.css";
 import { NavLink, Link } from "react-router-dom";
 
+import halforc from "../../assets/halforc.png";
+import elf from "../../assets/elf.png";
+import human from "../../assets/human.png";
+import dwarf from "../../assets/dwarf.png";
+import tiefling from "../../assets/tiefling.png";
+import gnome from "../../assets/gnome.png";
+import dragonborn from "../../assets/dragonborn.png";
+import halfling from "../../assets/halfling.png";
+
 function randomFromArray(arr) {
+
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
+const raceImages = {
+  "Half-Orc": halforc,
+  "Elf": elf,
+  "Human": human,
+  "Dwarf": dwarf,
+  "Tiefling": tiefling,
+  "Gnome": gnome,
+  "Dragonborn": dragonborn,
+  "Halfling": halfling
+};
 
 const NPCGenerator = () => {
   const [npc, setNpc] = useState(null);
@@ -22,22 +43,30 @@ const NPCGenerator = () => {
     };
     setNpc(newNpc);
   };
+  
+  const getNPCImage = () => {
+    if (!npc || !npc.race) return null;
+    return raceImages[npc.race];
+  };
+
 
 return (
     <div className={styles.pageWrapper}>
-     
-
-      {/* main content */}
       <main className={styles.mainContent}>
         
-        {/* Venstre side*/}
         <div className={styles.visualizer}>
-          {[1, 2, 3].map((i) => (
-            <div key={i} className={styles.selectorRow}>
-              <button className={styles.arrowBtn}>←</button>
-              <button className={styles.arrowBtn}>→</button>
-            </div>
-          ))}
+          {npc && getNPCImage() && (
+            <img 
+              src={getNPCImage()} 
+              alt={`${npc.race} character`}
+              className={styles.npcImage}
+            />
+          )}
+          {!npc && (
+            <p className={styles.placeholderText}>
+              Click "Random NPC" to generate a character
+            </p>
+          )}
         </div>
 
         {/* Højre side */}

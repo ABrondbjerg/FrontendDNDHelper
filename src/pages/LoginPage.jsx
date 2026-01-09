@@ -5,6 +5,7 @@ import LoggedIn from "../components/auth/LoggedIn";
 import CreateUser from "./CreateUser";
 import facade from "../apiFacade";
 import styles from "../styles/Loginstyle.module.css";
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -13,6 +14,7 @@ const LoginPage = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [registerMessage, setRegisterMessage] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
+  const navigate = useNavigate();
 
   const logout = () => {
     facade.logout();
@@ -28,6 +30,7 @@ const LoginPage = () => {
         const [username, roles] = facade.getUsernameAndRoles();
         setUsername(username);
         setRoles(roles);
+        navigate('/generators');
       })
       .catch((err) => {
         if (err.fullError) {

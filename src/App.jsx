@@ -14,6 +14,7 @@ import GeneratorMain from "/src/pages/GeneratorMain";
 import LoginPage from "/src/pages/LoginPage";
 import RegisterPage from "/src/pages/RegisterPage";
 import NotFoundPage from "/src/pages/NotFoundPage";
+import CreateUser from "./pages/CreateUser";
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
 
         <Route path="login" element={<LoginLayout />} />
         <Route index element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-
+       
+   <Route path="register" element={<CreateUser />} />
    <Route path="npc" element={<NPCGeneratorPage />} />
 
         <Route path="generators" element={<GeneratorLayout />}>
