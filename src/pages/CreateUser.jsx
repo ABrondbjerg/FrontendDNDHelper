@@ -46,7 +46,7 @@ function CreateUser({ onRegistered, onCancel }) {
       form={form}
       onChange={onChange}
       onSubmit={handleSubmit}
-      onCancel={onCancel}
+      onBacktoLogin={onCancel}
       submitting={submitting}
       message={msg}
     />

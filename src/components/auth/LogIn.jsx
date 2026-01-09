@@ -1,9 +1,11 @@
 import { useState } from "react"
 import styles from "../../styles/Loginstyle.module.css";
+import { useNavigate } from 'react-router-dom';
 
 function LogIn({ login, onRegisterClick, message, clearMessage }) {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
+  const navigate = useNavigate();
 
   const performLogin = (evt) => {
     evt.preventDefault();
@@ -46,6 +48,7 @@ function LogIn({ login, onRegisterClick, message, clearMessage }) {
         <button type="submit" className={styles.btnLogin}>
           Login
         </button>
+        
       </form>
 
       <div className={styles.divider}>or</div>
@@ -53,7 +56,7 @@ function LogIn({ login, onRegisterClick, message, clearMessage }) {
       <button 
         type="button" 
         className={styles.linkButton} 
-        onClick={onRegisterClick}
+       onClick={() => navigate('/register')}
       >
         Don't have an account? Create one
       </button>

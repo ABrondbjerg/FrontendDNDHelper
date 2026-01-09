@@ -1,6 +1,6 @@
 .loginContainer {
   display: flex;
-  
+
   justify-content: center;
     align-items: center;
   min-height: 100vh;
@@ -49,6 +49,9 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
+    background: white;
+  color:#000000
+
 }
 
 .inputGroup input:focus {

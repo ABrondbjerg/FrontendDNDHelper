@@ -32,7 +32,7 @@
   align-items: start;
 }
 
-/* Karakter-vælger (venstre side) */
+
 .visualizer {
   border: 2px solid black;
   border-radius: 10px;
@@ -50,14 +50,7 @@
   align-items: center;
 }
 
-.arrowBtn {
-  background: none;
-  border: 1px solid black;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
+
 
 /* Info sektion (højre side) */
 .infoSection {

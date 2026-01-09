@@ -30,12 +30,7 @@ return (
         
         {/* Venstre side*/}
         <div className={styles.visualizer}>
-          {[1, 2, 3].map((i) => (
-            <div key={i} className={styles.selectorRow}>
-              <button className={styles.arrowBtn}>←</button>
-              <button className={styles.arrowBtn}>→</button>
-            </div>
-          ))}
+      
         </div>
 
         {/* Højre side */}
